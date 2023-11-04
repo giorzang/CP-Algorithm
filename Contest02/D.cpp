@@ -52,7 +52,7 @@ namespace {
 
 using namespace std;
 
-const int MAXN = 1e6 + 3;
+const int MAXN = 4e5 + 3;
 
 int a[MAXN], fact[MAXN], inv[MAXN];
 
@@ -103,11 +103,13 @@ signed main() {
 	
 	ll sum = 0;
 	for (int i = 1; i <= n; i++) {
-		sum += 0ll + a[i + n] - a[i];
+		sum += a[i + n] - a[i];
 	}
+	sum %= mod;
+
 	init_fact(n << 1);
 
-	cout << 1ll * nCk(n << 1, n) * sum % mod;
+	cout << sum * nCk(n << 1, n) % mod;
 
     return (0 ^ 0);
 }
